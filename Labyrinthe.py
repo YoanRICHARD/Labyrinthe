@@ -7,7 +7,7 @@ random_maze = {(15, 21), (26, 21), (7, 17), (18, 17), (7, 26), (18, 26), (27, 4)
 def colormap(x):
     return [min(int(256 * x), 255) for x in cm.viridis(x)[0:3]]
 
-def display_maze(maze, source):
+def display_maze(maze, source, arrivee = None):
     pygame.init()
     pygame.display.set_caption("Labyrinthes")
     screen = pygame.display.set_mode((600, 600))
@@ -15,13 +15,19 @@ def display_maze(maze, source):
     screen.fill((0, 0, 0))
     for x, y in maze:
         pygame.draw.rect(screen, (255, 255, 255), (20 * x, 20 * y, 20, 20))
-    #for x, y in chemins_from(maze, source)[2]:
-        #pygame.draw.rect(screen, (128, 255, 128), (20 * x, 20 * y, 20, 20))
-    nombre_etapes = chemins_from(maze, source)[1]
+        
+    """for x, y in chemins_from(maze, source)[2]:
+        pygame.draw.rect(screen, (128, 255, 128), (20 * x, 20 * y, 20, 20))"""
+
+    '''nombre_etapes = chemins_from(maze, source)[1]
     distance_max = len(nombre_etapes)
     for i in range (distance_max):
         for x, y in nombre_etapes[i]:
-            pygame.draw.rect(screen, [min(int(256 * x), 255) for x in cm.viridis(i/distance_max)[0:3]], (20 * x, 20 * y, 20, 20))
+            pygame.draw.rect(screen, [min(int(256 * x), 255) for x in cm.viridis(i/distance_max)[0:3]], (20 * x, 20 * y, 20, 20))'''
+
+    """for x, y in chemins_from(maze, source)[0][arrivee]:
+        pygame.draw.rect(screen, (255, 128, 128), (20 * x, 20 * y, 20, 20))"""
+
     pygame.display.update()
 
     while True:
@@ -57,4 +63,4 @@ def chemins_from(maze, source):
     return chemins, nombre_etapes, visites
 
 # print(chemins_from(random_maze, (0,0))[1])
-display_maze(random_maze, (14, 14))
+display_maze(random_maze, (0, 0), (29, 29))
