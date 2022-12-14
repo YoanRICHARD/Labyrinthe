@@ -57,4 +57,4 @@ def chemins_from(maze, source):
     return chemins, nombre_etapes, visites
 
 # print(chemins_from(random_maze, (0,0))[1])
-display_maze(random_maze, (14,14))
+display_maze(random_maze, (14, 14))
